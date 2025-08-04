@@ -1,0 +1,893 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>Vladimir Fiffie Jr - Portfolio</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap"
+            rel="stylesheet"
+        />
+        <!-- Boxicons CDN -->
+        <link
+            href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+            rel="stylesheet"
+        />
+        <!-- Simple Icons CDN for tech icons -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/simple-icons@9.21.0/icons/icons.css"
+        />
+        <!-- Swiper CSS -->
+        <link
+            rel="stylesheet"
+            href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"
+        />
+        <!-- Link to the external stylesheet -->
+        <link rel="stylesheet" href="style.css" />
+    </head>
+    <body>
+        <!-- Canvas for particle effects -->
+        <canvas id="particleCanvas"></canvas>
+
+        <!-- Custom Alert Modal Structure -->
+        <div id="customAlert" class="custom-alert">
+            <div class="custom-alert-content">
+                <p id="alertMessage"></p>
+                <button id="alertCloseBtn">OK</button>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <header class="header">
+            <nav class="navbar">
+                <div class="nav-left">
+                    <ul class="nav-links">
+                        <li><a href="#home">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="nav-right">
+                    <button class="theme-toggle" onclick="toggleTheme()">
+                        <i class="bx bx-sun" id="theme-icon"></i>
+                    </button>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1 class="hero-title">Vladimir Fiffie Jr</h1>
+                <div class="subtitle">Website Designer</div>
+                <p>
+                    I design and build exceptional digital experiences with a
+                    focus on simplicity and functionality.
+                </p>
+                <div class="hero-buttons">
+                    <a href="#projects" class="btn-primary">View My Work</a>
+                    <a href="#contact" class="btn-secondary">Get In Touch</a>
+                </div>
+            </div>
+        </section>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop" class="back-to-top">
+            <i class="bx bx-up-arrow-alt"></i>
+        </button>
+
+        <!-- About Section -->
+        <section class="about fade-in" id="about">
+            <div class="container">
+                <div class="about-content">
+                    <div class="about-image">
+                        <img
+                            src="https://placehold.co/400x400/F8F9FA/000000?text=Vladimir+Fiffie+Jr"
+                            alt="Vladimir Fiffie Jr"
+                        />
+                    </div>
+                    <div class="about-text">
+                        <h2>About Me</h2>
+                        <p>
+                            I'm an Information Technology student with a passion
+                            for website design and creating smooth,
+                            user-friendly interfaces. I enjoy combining
+                            creativity with code using tools like HTML, CSS,
+                            React, and Figma to bring ideas to life.
+                        </p>
+                        <p>
+                            When I’m not working on web projects, I’m usually
+                            designing logos, editing videos, or deep in a gaming
+                            session. Whether it’s building something from
+                            scratch or leveling up in-game, I’m always looking
+                            for fun, creative ways to challenge myself.
+                        </p>
+                        <div class="about-actions">
+                            <a
+                                href="./assets/Resume 5⁄10⁄25.docx"
+                                download
+                                class="btn-primary resume-btn"
+                            >
+                                <i class="bx bx-download"></i> Download Resume
+                            </a>
+                        </div>
+                        <div class="skills-compact">
+                            <div class="skills-grid">
+                                <div class="skill-icon" data-tech="HTML">
+                                    <i class="bx bxl-html5"></i>
+                                    <span>HTML</span>
+                                </div>
+                                <div class="skill-icon" data-tech="CSS">
+                                    <i class="bx bxl-css3"></i>
+                                    <span>CSS</span>
+                                </div>
+                                <div class="skill-icon" data-tech="Java">
+                                    <i class="bx bxl-java"></i>
+                                    <span>Java</span>
+                                </div>
+                                <div class="skill-icon" data-tech="React">
+                                    <i class="bx bxl-react"></i>
+                                    <span>React</span>
+                                </div>
+                                <div class="skill-icon" data-tech="Figma">
+                                    <i class="bx bxl-figma"></i>
+                                    <span>Figma</span>
+                                </div>
+                                <div class="skill-icon" data-tech="Photoshop">
+                                    <i class="bx bxs-photo-album"></i>
+                                    <span>Photoshop</span>
+                                </div>
+                                <div class="skill-icon" data-tech="Git">
+                                    <i class="bx bxl-git"></i>
+                                    <span>Git</span>
+                                </div>
+                                <div class="skill-icon" data-tech="VS Code">
+                                    <i class="bx bxl-visual-studio"></i>
+                                    <span>VS Code</span>
+                                </div>
+                                <div class="skill-icon" data-tech="UI/UX">
+                                    <i class="bx bx-palette"></i>
+                                    <span>UI/UX</span>
+                                </div>
+                                <div class="skill-icon" data-tech="Godot">
+                                    <i class="bx bx-joystick"></i>
+                                    <span>Godot</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section class="projects fade-in" id="projects">
+            <div class="container">
+                <div class="section-header">
+                    <h2>Featured Projects</h2>
+                    <p>
+                        A collection of recent work showcasing various
+                        technologies and design approaches
+                    </p>
+                </div>
+                <div class="swiper projects-swiper">
+                    <div class="swiper-wrapper">
+                        <div class="swiper-slide">
+                            <div class="project-card">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <img
+                                            src="images/paoer-ship.jpg"
+                                            alt="Pao'er Ship"
+                                        />
+                                        <div class="card-overlay">
+                                            <h3>Pao'er Ship</h3>
+                                            <div class="tech-badges">
+                                                <span class="tech-badge"
+                                                    >Pygame</span
+                                                >
+                                                <span class="tech-badge"
+                                                    >Python</span
+                                                >
+                                                <span class="tech-badge"
+                                                    >Raspberry Pi</span
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>Pao'er Ship</h3>
+                                        <p>
+                                            A Raspberry Pi-based Battleship
+                                            game. Key features include:
+                                            player-vs-player gameplay with turn
+                                            transitions, interactive ship
+                                            placement with rotation and
+                                            validation, and a customizable game
+                                            timer with visual warnings. (Course:
+                                            Computer Architecture | Jan 2025 –
+                                            May 2025)
+                                        </p>
+                                        <div class="project-links">
+                                            <a
+                                                href="https://github.com/ponderrr/paoer_ship"
+                                                class="project-btn"
+                                                >GitHub</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="project-card">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <img
+                                            src="images/lion-den-cinema.png"
+                                            alt="Lion's Den Cinema"
+                                        />
+                                        <div class="card-overlay">
+                                            <h3>Lion's Den Cinema</h3>
+                                            <div class="tech-badges">
+                                                <span class="tech-badge"
+                                                    >React</span
+                                                >
+                                                <span class="tech-badge"
+                                                    >TypeScript</span
+                                                >
+                                                <span class="tech-badge"
+                                                    >Figma</span
+                                                >
+                                                <span class="tech-badge"
+                                                    >UI/UX</span
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>Lion's Den Cinema</h3>
+                                        <p>
+                                            A comprehensive cinema application.
+                                            Highlights include: UI mockups in
+                                            Figma for mobile and web, responsive
+                                            React/TypeScript frontend with dark
+                                            mode and authentication, and
+                                            reusable components (movie
+                                            carousels, seat maps, QR tickets).
+                                            (Course: Information Systems | Jan
+                                            2025 – May 2025)
+                                        </p>
+                                        <div class="project-links">
+                                            <a href="#" class="project-btn"
+                                                >GitHub</a
+                                            >
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="swiper-slide">
+                            <div class="project-card">
+                                <div class="card-inner">
+                                    <div class="card-front">
+                                        <img
+                                            src="https://placehold.co/400x300/F8F9FA/000000?text=Rate+Mates"
+                                            alt="Rate Mates"
+                                        />
+                                        <div class="card-overlay">
+                                            <h3>Rate Mates</h3>
+                                            <div class="tech-badges">
+                                                <span class="tech-badge"
+                                                    >React</span
+                                                >
+                                                <span class="tech-badge"
+                                                    >UI/UX</span
+                                                >
+                                                <span class="tech-badge"
+                                                    >Branding</span
+                                                >
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="card-back">
+                                        <h3>Rate Mates</h3>
+                                        <p>
+                                            A community media review site.
+                                            Contributions include: project logo
+                                            and UI/UX layout design, team
+                                            coordination for design asset
+                                            delivery, and front-end
+                                            implementation with React,
+                                            establishing a consistent design
+                                            system. (Course: Software
+                                            Engineering | Jan 2023 – May 2023)
+                                        </p>
+                                        <div class="project-links"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Swiper Pagination -->
+                    <div class="swiper-pagination"></div>
+
+                    <!-- Swiper Navigation -->
+                    <div class="swiper-button-next"></div>
+                    <div class="swiper-button-prev"></div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section class="contact fade-in" id="contact">
+            <div class="container">
+                <h2>Let's Work Together</h2>
+                <p>
+                    Have a project in mind? I'd love to hear about it and
+                    discuss how we can bring your ideas to life.
+                </p>
+                <form
+                    class="contact-form"
+                    action="https://formsubmit.co/vladimir.fiffiejr@proton.me"
+                    method="POST"
+                    enctype="multipart/form-data"
+                >
+                    <!-- Hidden Inputs for Options -->
+                    <input type="hidden" name="_captcha" value="false" />
+                    <input
+                        type="hidden"
+                        name="_subject"
+                        value="New Contact Form Submission"
+                    />
+                    <input
+                        type="hidden"
+                        name="_next"
+                        value="https://yourdomain.com/thank-you.html"
+                    />
+
+                    <!-- Name -->
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input
+                            type="text"
+                            id="name"
+                            name="name"
+                            placeholder="Your name"
+                            required
+                        />
+                    </div>
+
+                    <!-- Email -->
+                    <div class="form-group">
+                        <label for="email">Email</label>
+                        <input
+                            type="email"
+                            id="email"
+                            name="email"
+                            placeholder="your@email.com"
+                            required
+                        />
+                    </div>
+
+                    <!-- Message -->
+                    <div class="form-group">
+                        <label for="message">Message</label>
+                        <textarea
+                            id="message"
+                            name="message"
+                            placeholder="Tell me about your project..."
+                            required
+                        ></textarea>
+                    </div>
+
+                    <!-- File Upload -->
+                    <div class="form-group">
+                        <label for="file">Attach a file (optional)</label>
+                        <div class="file-upload-wrapper">
+                            <input
+                                type="file"
+                                id="file"
+                                name="attachment"
+                                accept=".pdf,.doc,.docx,.jpg,.png,.zip,.txt"
+                                onchange="updateFileName(this)"
+                            />
+                            <div class="file-upload-button">
+                                <i class="bx bx-upload"></i>
+                                Choose File
+                            </div>
+                        </div>
+                        <div class="file-upload-text" id="file-name">
+                            No file chosen
+                        </div>
+                    </div>
+
+                    <!-- Submit -->
+                    <button type="submit" class="form-submit">
+                        Send Message
+                    </button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <div class="container">
+                <!-- Local SVG Logo -->
+
+                <div class="social-links">
+                    <a
+                        href="https://github.com/vladimirfiffie"
+                        target="_blank"
+                        class="social-link"
+                        title="GitHub"
+                    >
+                        <!-- SVG for GitHub -->
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-github"
+                        >
+                            <path
+                                d="M15 22v-4a4.8 4.8 0 0 0-1-3.21c-.34-.1-.95-.24-1.7-.14-2.2-.1-4-1.33-4-3.52 0-.92.36-1.78 1-2.43 0-.11-.53-2.07.24-4.26 0 0 1.63.42 5.5.73 4.1-.31 5.5-.73 5.5-.73.78 2.19.24 4.26.24 4.26.64.65 1 1.51 1 2.43 0 2.2-1.8 3.42-4 3.52-.75.1-1.36.01-1.7.14-.36.31-1 1-1.36 1.76V22"
+                            ></path>
+                            <path d="M9 19c-2.3 0-3.6-1.7-4-3.22V12"></path>
+                        </svg>
+                    </a>
+                    <a
+                        href="https://www.linkedin.com/in/vladimir-fiffie"
+                        target="_blank"
+                        class="social-link"
+                        title="LinkedIn"
+                    >
+                        <!-- SVG for LinkedIn -->
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-linkedin"
+                        >
+                            <path
+                                d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"
+                            ></path>
+                            <rect width="4" height="12" x="2" y="9"></rect>
+                            <circle cx="4" cy="4" r="2"></circle>
+                        </svg>
+                    </a>
+                    <a
+                        href="mailto:vladimir.fiffiejr@proton.me"
+                        class="social-link"
+                        title="Email"
+                    >
+                        <!-- SVG for Email -->
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="24"
+                            height="24"
+                            viewBox="0 0 24 24"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                            stroke-linecap="round"
+                            stroke-linejoin="round"
+                            class="lucide lucide-mail"
+                        >
+                            <rect
+                                width="20"
+                                height="16"
+                                x="2"
+                                y="4"
+                                rx="2"
+                            ></rect>
+                            <path
+                                d="m22 7-8.97 5.7a1.94 1.94 0 0 1-2.06 0L2 7"
+                            ></path>
+                        </svg>
+                    </a>
+                </div>
+                <p>&copy; 2025 Vladimir Fiffie Jr. All rights reserved.</p>
+            </div>
+        </footer>
+
+        <script>
+            // Custom Alert Modal
+            function showCustomAlert(message) {
+                const customAlert = document.getElementById("customAlert");
+                const alertMessage = document.getElementById("alertMessage");
+                alertMessage.textContent = message;
+                customAlert.style.display = "flex"; // Show the modal
+                // Close on "OK" button click
+                document.getElementById("alertCloseBtn").onclick = () => {
+                    customAlert.style.display = "none";
+                };
+                // Close on outside click
+                customAlert.onclick = (event) => {
+                    if (event.target === customAlert) {
+                        customAlert.style.display = "none";
+                    }
+                };
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
+                anchor.addEventListener("click", function (e) {
+                    e.preventDefault();
+                    document
+                        .querySelector(this.getAttribute("href"))
+                        .scrollIntoView({
+                            behavior: "smooth",
+                        });
+                });
+            });
+
+            // Scroll animations
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px", // Adjust margin to fine-tune when animation triggers
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach((entry) => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add("visible");
+                        // Stop observing once visible if you want the animation to happen only once
+                        // observer.unobserve(entry.target);
+                    } else {
+                        // Optional: remove 'visible' class if element scrolls out of view
+                        // entry.target.classList.remove("visible");
+                    }
+                });
+            }, observerOptions);
+
+            // Observe all elements with the 'fade-in' class
+            document.querySelectorAll(".fade-in").forEach((el) => {
+                observer.observe(el);
+            });
+
+            // Theme toggle function
+            function toggleTheme() {
+                const isDarkMode = document.body.classList.toggle("dark-mode");
+                localStorage.setItem("theme", isDarkMode ? "dark" : "light");
+                updateThemeButtonText(isDarkMode);
+                // Update particle colors when theme changes
+                particles.forEach((p) => {
+                    p.color = isDarkMode
+                        ? "rgba(255, 255, 255, 0.8)"
+                        : "rgba(0, 0, 0, 0.8)";
+                });
+            }
+
+            // Function to update the theme toggle button icon
+            function updateThemeButtonText(isDarkMode) {
+                const themeIcon = document.getElementById("theme-icon");
+                const themeToggleBtn = document.querySelector(".theme-toggle");
+                if (themeIcon) {
+                    if (isDarkMode) {
+                        themeIcon.className = "bx bx-sun";
+                    } else {
+                        themeIcon.className = "bx bx-moon";
+                    }
+                }
+                // Add bounce animation
+                if (themeToggleBtn) {
+                    themeToggleBtn.classList.add("bounce-twice");
+                    setTimeout(() => {
+                        themeToggleBtn.classList.remove("bounce-twice");
+                    }, 600);
+                }
+            }
+
+            // Initialize theme on page load
+            document.addEventListener("DOMContentLoaded", () => {
+                const savedTheme = localStorage.getItem("theme");
+                const isDarkMode = savedTheme === "dark";
+                if (isDarkMode) {
+                    document.body.classList.add("dark-mode");
+                }
+                updateThemeButtonText(isDarkMode);
+
+                // Handle contact form submission
+                document
+                    .querySelector(".contact-form")
+                    .addEventListener("submit", function (e) {
+                        e.preventDefault();
+                        // Add actual form submission logic here (e.g., fetch API)
+                        showCustomAlert(
+                            "Message sent! I'll get back to you soon.",
+                        );
+                        this.reset(); // Clear form fields after submission
+                    });
+
+                // Active navigation link highlighting on scroll
+                window.addEventListener("scroll", () => {
+                    const scrollPos = window.scrollY;
+                    const sections = document.querySelectorAll("section[id]");
+
+                    sections.forEach((section) => {
+                        // Adjust offset for fixed header height
+                        const sectionTop = section.offsetTop - 100;
+                        const sectionHeight = section.offsetHeight;
+                        const sectionId = section.getAttribute("id");
+
+                        if (
+                            scrollPos >= sectionTop &&
+                            scrollPos < sectionTop + sectionHeight
+                        ) {
+                            // Remove 'active' class from all nav links
+                            document
+                                .querySelectorAll(".nav-links a")
+                                .forEach((link) => {
+                                    link.classList.remove("active");
+                                });
+                            // Add 'active' class to the current section's nav link
+                            document
+                                .querySelector(
+                                    `.nav-links a[href="#${sectionId}"]`,
+                                )
+                                ?.classList.add("active");
+                        }
+                    });
+                });
+
+                // --- Particle Effect Implementation ---
+                const canvas = document.getElementById("particleCanvas");
+                const ctx = canvas.getContext("2d");
+                let particles = []; // Array to hold all active particles
+                const maxParticles = 150; // Maximum number of particles to draw at once
+                const particleCountOnMove = 3; // Number of new particles to create on each mouse movement
+
+                // Function to resize canvas to fill the viewport
+                function resizeCanvas() {
+                    canvas.width = window.innerWidth;
+                    canvas.height = window.innerHeight;
+                }
+
+                // Add event listener for window resize to adjust canvas size
+                window.addEventListener("resize", resizeCanvas);
+                // Initial call to set canvas size
+                resizeCanvas();
+
+                // Particle class definition
+                class Particle {
+                    constructor(x, y) {
+                        this.x = x;
+                        this.y = y;
+                        this.radius = Math.random() * 2 + 0.5; // Random size for particle
+                        // Set particle color based on current theme
+                        this.color = document.body.classList.contains(
+                            "dark-mode",
+                        )
+                            ? "rgba(255, 255, 255, 0.8)"
+                            : "rgba(0, 0, 0, 0.8)";
+                        this.alpha = 1; // Initial opacity
+                        this.speed = Math.random() * 2 + 0.5; // Random movement speed
+                        this.angle = Math.random() * Math.PI * 2; // Random direction (0 to 2*PI radians)
+                        this.vx = Math.cos(this.angle) * this.speed; // Velocity in x direction
+                        this.vy = Math.sin(this.angle) * this.speed; // Velocity in y direction
+                        this.friction = 0.95; // Factor to slow down particles over time
+                        this.lifeSpan = Math.random() * 60 + 30; // How many frames the particle lives
+                        this.currentLife = 0; // Current life count
+                    }
+
+                    // Update particle's position, velocity, and alpha
+                    update() {
+                        this.x += this.vx;
+                        this.y += this.vy;
+                        this.vx *= this.friction;
+                        this.vy *= this.friction;
+                        this.currentLife++;
+                        // Calculate alpha to fade out particle over its lifespan
+                        this.alpha = 1 - this.currentLife / this.lifeSpan;
+                        if (this.alpha < 0) this.alpha = 0; // Prevent negative alpha
+                    }
+
+                    // Draw the particle on the canvas
+                    draw() {
+                        ctx.save(); // Save current canvas state
+                        ctx.globalAlpha = this.alpha; // Apply current particle opacity
+                        ctx.beginPath();
+                        ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2); // Draw a circle
+                        ctx.fillStyle = this.color; // Set fill color
+                        ctx.fill(); // Fill the circle
+                        ctx.restore(); // Restore canvas state
+                    }
+                }
+
+                // Event listener to create particles on mouse movement
+                document.addEventListener("mousemove", (e) => {
+                    for (let i = 0; i < particleCountOnMove; i++) {
+                        // Only add new particles if below the max limit
+                        if (particles.length < maxParticles) {
+                            particles.push(new Particle(e.clientX, e.clientY));
+                        }
+                    }
+                });
+
+                // Add particles on scroll for additional effect
+                let scrollTimeout;
+                window.addEventListener("scroll", (e) => {
+                    clearTimeout(scrollTimeout);
+                    scrollTimeout = setTimeout(() => {
+                        const centerX = window.innerWidth / 2;
+                        const centerY = window.innerHeight / 2;
+                        for (let i = 0; i < 3; i++) {
+                            if (particles.length < maxParticles) {
+                                particles.push(
+                                    new Particle(
+                                        centerX + (Math.random() - 0.5) * 300,
+                                        centerY + (Math.random() - 0.5) * 300,
+                                    ),
+                                );
+                            }
+                        }
+                    }, 30);
+                });
+
+                // Add particles on hover over project cards
+                document.querySelectorAll(".project-card").forEach((card) => {
+                    card.addEventListener("mouseenter", (e) => {
+                        const rect = e.target.getBoundingClientRect();
+                        const centerX = rect.left + rect.width / 2;
+                        const centerY = rect.top + rect.height / 2;
+                        for (let i = 0; i < 5; i++) {
+                            if (particles.length < maxParticles) {
+                                particles.push(
+                                    new Particle(
+                                        centerX + (Math.random() - 0.5) * 100,
+                                        centerY + (Math.random() - 0.5) * 100,
+                                    ),
+                                );
+                            }
+                        }
+                    });
+                });
+
+                // Add particles on button hover
+                document
+                    .querySelectorAll(
+                        ".btn-primary, .btn-secondary, .form-submit",
+                    )
+                    .forEach((btn) => {
+                        btn.addEventListener("mouseenter", (e) => {
+                            const rect = e.target.getBoundingClientRect();
+                            const centerX = rect.left + rect.width / 2;
+                            const centerY = rect.top + rect.height / 2;
+                            for (let i = 0; i < 3; i++) {
+                                if (particles.length < maxParticles) {
+                                    particles.push(
+                                        new Particle(
+                                            centerX +
+                                                (Math.random() - 0.5) * 50,
+                                            centerY +
+                                                (Math.random() - 0.5) * 50,
+                                        ),
+                                    );
+                                }
+                            }
+                        });
+                    });
+
+                // Add random particles throughout the page periodically
+                setInterval(() => {
+                    if (particles.length < maxParticles - 10) {
+                        for (let i = 0; i < 2; i++) {
+                            particles.push(
+                                new Particle(
+                                    Math.random() * window.innerWidth,
+                                    Math.random() * window.innerHeight,
+                                ),
+                            );
+                        }
+                    }
+                }, 3000);
+
+                // Animation loop for particles
+                function animateParticles() {
+                    ctx.clearRect(0, 0, canvas.width, canvas.height); // Clear the entire canvas
+
+                    // Iterate through particles from end to beginning to safely remove them
+                    for (let i = particles.length - 1; i >= 0; i--) {
+                        particles[i].update(); // Update particle state
+                        particles[i].draw(); // Draw particle on canvas
+
+                        // Remove particle if it has faded out or reached end of its life
+                        if (
+                            particles[i].alpha <= 0.05 ||
+                            particles[i].currentLife >= particles[i].lifeSpan
+                        ) {
+                            particles.splice(i, 1); // Remove particle from array
+                        }
+                    }
+                    requestAnimationFrame(animateParticles); // Request next animation frame
+                }
+
+                // Start the particle animation loop
+                animateParticles();
+
+                // Initialize Swiper
+                const projectsSwiper = new Swiper(".projects-swiper", {
+                    effect: "coverflow",
+                    grabCursor: true,
+                    centeredSlides: true,
+                    loop: true,
+                    slidesPerView: "auto",
+                    coverflowEffect: {
+                        rotate: 50,
+                        stretch: 0,
+                        depth: 100,
+                        modifier: 1,
+                        slideShadows: true,
+                    },
+                    autoplay: {
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    },
+                    pagination: {
+                        el: ".swiper-pagination",
+                        clickable: true,
+                        dynamicBullets: true,
+                    },
+                    navigation: {
+                        nextEl: ".swiper-button-next",
+                        prevEl: ".swiper-button-prev",
+                    },
+                    keyboard: {
+                        enabled: true,
+                        onlyInViewport: true,
+                    },
+                    mousewheel: {
+                        thresholdDelta: 50,
+                    },
+                    breakpoints: {
+                        640: {
+                            coverflowEffect: {
+                                rotate: 30,
+                                depth: 80,
+                            },
+                        },
+                        768: {
+                            coverflowEffect: {
+                                rotate: 40,
+                                depth: 90,
+                            },
+                        },
+                        1024: {
+                            coverflowEffect: {
+                                rotate: 50,
+                                depth: 100,
+                            },
+                        },
+                    },
+                });
+            });
+        </script>
+
+        <!-- Back to Top Button -->
+        <button id="backToTop" class="back-to-top" title="Back to Top">
+            <i class="bx bx-up-arrow-alt"></i>
+        </button>
+
+        <!-- Swiper JS -->
+        <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    </body>
+</html>
