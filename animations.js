@@ -267,20 +267,39 @@ const initNumberCounter = () => {
     });
 };
 
-// Navbar Background on Scroll
 const initNavbarScroll = () => {
     const nav = document.querySelector('.nav');
-    if (!nav) return;
-    
-    window.addEventListener('scroll', () => {
-        const currentScroll = window.scrollY;
-        
-        if (currentScroll > 50) {
-            nav.classList.add('scrolled');
-        } else {
-            nav.classList.remove('scrolled');
+    if (!nav || typeof gsap === 'undefined') return;
+
+    let isScrolled = false;
+    let ticking = false;
+
+    const EXPANDED_WIDTH = 1200;
+    const COLLAPSED_WIDTH = 880;
+
+    const updateNavbar = () => {
+        const shouldCondense = window.scrollY > 50;
+
+        if (shouldCondense !== isScrolled) {
+            isScrolled = shouldCondense;
+            nav.classList.toggle('scrolled', shouldCondense);
+
+            gsap.to(nav, {
+                maxWidth: shouldCondense ? COLLAPSED_WIDTH : EXPANDED_WIDTH,
+                duration: 1.2,
+                ease: 'elastic.out(1, 0.3)',
+                overwrite: true
+            });
         }
-    });
+        ticking = false;
+    };
+
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(updateNavbar);
+            ticking = true;
+        }
+    }, { passive: true });
 };
 
 // Typewriter Text Animation

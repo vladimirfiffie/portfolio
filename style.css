@@ -127,21 +127,26 @@ body:hover .cursor-follower {
     left: 50%;
     transform: translateX(-50%);
     z-index: 1000;
+
     width: calc(100% - 2 * var(--space-md));
     max-width: var(--container-width);
+
     padding: var(--space-sm) var(--space-lg);
     background: rgba(255, 255, 255, 0.8);
     backdrop-filter: blur(20px) saturate(180%);
     -webkit-backdrop-filter: blur(20px) saturate(180%);
     border: 1px solid var(--border);
     border-radius: var(--radius-full);
-    transition: all var(--transition-base);
+
     box-shadow: var(--shadow-sm);
+
+    /* IMPORTANT */
+    will-change: max-width;
 }
 
+/* Scrolled state (NO width animation here) */
 .nav.scrolled {
     top: var(--space-md);
-    border-radius: var(--radius-full);
     box-shadow: var(--shadow-lg);
 }
 
