@@ -57,14 +57,28 @@ const initCursorFollower = () => {
     };
     animateCursor();
 
-    // Scale on hover
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-item');
+    // Enhanced hover effect for clickable elements
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-item, .contact-item, .resume-download-wrapper .btn, input, textarea, .nav-link');
     hoverElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
-            gsap.to(cursor, { scale: 1.5, duration: 0.3 });
+            cursor.classList.add('hover');
+            if (typeof gsap !== 'undefined') {
+                gsap.to(cursor, { 
+                    scale: 1.2, 
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            }
         });
         el.addEventListener('mouseleave', () => {
-            gsap.to(cursor, { scale: 1, duration: 0.3 });
+            cursor.classList.remove('hover');
+            if (typeof gsap !== 'undefined') {
+                gsap.to(cursor, { 
+                    scale: 1, 
+                    duration: 0.3,
+                    ease: 'power2.out'
+                });
+            }
         });
     });
 };
@@ -140,6 +154,88 @@ const initSmoothScroll = () => {
                 target.scrollIntoView({ behavior: 'smooth', block: 'start' });
             }
         });
+    });
+};
+
+// Featured Projects Slider
+const initProjectSlider = () => {
+    const slider = document.querySelector('.projects-swiper');
+    if (!slider || typeof Swiper === 'undefined') return;
+
+    // eslint-disable-next-line no-new
+    new Swiper(slider, {
+        slidesPerView: 'auto',
+        centeredSlides: true,
+        spaceBetween: 24,
+        loop: true,
+        grabCursor: true,
+        effect: 'coverflow',
+        coverflowEffect: {
+            rotate: 0,
+            stretch: 0,
+            depth: 120,
+            modifier: 1.2,
+            slideShadows: false,
+            scale: 0.95
+        },
+        pagination: {
+            el: slider.querySelector('.swiper-pagination'),
+            clickable: true
+        },
+        navigation: {
+            nextEl: slider.querySelector('.swiper-button-next'),
+            prevEl: slider.querySelector('.swiper-button-prev')
+        },
+        breakpoints: {
+            768: {
+                spaceBetween: 28,
+                coverflowEffect: {
+                    depth: 160,
+                    scale: 0.96
+                }
+            },
+            1024: {
+                spaceBetween: 32,
+                coverflowEffect: {
+                    depth: 200,
+                    scale: 1
+                }
+            }
+        }
+    });
+};
+
+// Interactive Project Cards (3D tilt + light)
+const initInteractiveCards = () => {
+    const cards = document.querySelectorAll('.project-card, .skill-item, .contact-item, .contact-form, .resume-download-wrapper .btn');
+    if (!cards.length) return;
+
+    cards.forEach(card => {
+        const handleMove = (e) => {
+            const rect = card.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const px = (x / rect.width) - 0.5;
+            const py = (y / rect.height) - 0.5;
+
+            const tiltX = (-py * 10).toFixed(2);
+            const tiltY = (px * 10).toFixed(2);
+
+            card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
+            card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
+            card.style.setProperty('--tilt-x', `${tiltX}deg`);
+            card.style.setProperty('--tilt-y', `${tiltY}deg`);
+        };
+
+        const reset = () => {
+            card.style.setProperty('--mouse-x', '50%');
+            card.style.setProperty('--mouse-y', '50%');
+            card.style.setProperty('--tilt-x', '0deg');
+            card.style.setProperty('--tilt-y', '0deg');
+        };
+
+        card.addEventListener('mousemove', handleMove);
+        card.addEventListener('mouseleave', reset);
     });
 };
 
@@ -273,6 +369,8 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initActiveNav();
     initSmoothScroll();
+    initProjectSlider();
+    initInteractiveCards();
     initForm();
     initBackToTop();
 });

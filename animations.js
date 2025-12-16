@@ -78,23 +78,6 @@ const initScrollAnimations = () => {
             delay: index * 0.1,
             ease: 'power3.out'
         });
-
-        // Hover animation
-        card.addEventListener('mouseenter', () => {
-            gsap.to(card, {
-                y: -8,
-                duration: 0.3,
-                ease: 'power2.out'
-            });
-        });
-
-        card.addEventListener('mouseleave', () => {
-            gsap.to(card, {
-                y: 0,
-                duration: 0.3,
-                ease: 'power2.out'
-            });
-        });
     });
 
     // About Section
@@ -216,15 +199,21 @@ const initParallaxOrbs = () => {
 
     const animateOrbs = () => {
         orbs.forEach((orb, index) => {
-            const speed = (index + 1) * 0.5;
-            const x = mouseX * 50 * speed;
-            const y = mouseY * 50 * speed;
-            
+            const depth = (index + 1) * 40;
+            const parallaxStrength = (index + 1) * 0.4;
+            const x = mouseX * 40 * parallaxStrength;
+            const y = mouseY * 40 * parallaxStrength;
+
             gsap.to(orb, {
-                x: x,
-                y: y,
+                x,
+                y,
+                z: depth,
+                scale: 1 + (index * 0.05),
+                rotateY: mouseX * 10,
+                rotateX: -mouseY * 10,
                 duration: 2,
-                ease: 'power1.out'
+                ease: 'power1.out',
+                overwrite: true
             });
         });
         requestAnimationFrame(animateOrbs);
@@ -307,7 +296,7 @@ const initTextInterchange = () => {
     const typewriterText = document.querySelector('.typewriter-text');
     if (!typewriterText) return;
 
-    const words = ['Developer', 'Designer', 'Coder', 'Builder'];
+    const words = ['playful interfaces', 'cinematic web experiences', 'pixel-perfect UIs', 'thoughtful animations'];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
