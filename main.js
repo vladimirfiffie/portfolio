@@ -58,7 +58,7 @@ const initCursorFollower = () => {
     animateCursor();
 
     // Enhanced hover effect for clickable elements
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-item, .contact-item, .resume-download-wrapper .btn, input, textarea, .nav-link');
+    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-item, .contact-btn, .resume-download-wrapper .btn, input, textarea, .nav-link');
     hoverElements.forEach(el => {
         el.addEventListener('mouseenter', () => {
             cursor.classList.add('hover');
@@ -207,7 +207,7 @@ const initProjectSlider = () => {
 
 // Interactive Project Cards (3D tilt + light)
 const initInteractiveCards = () => {
-    const cards = document.querySelectorAll('.project-card, .skill-item, .contact-item, .contact-form, .resume-download-wrapper .btn');
+    const cards = document.querySelectorAll('.project-card, .skill-item, .contact-form, .resume-download-wrapper .btn');
     if (!cards.length) return;
 
     cards.forEach(card => {
@@ -236,6 +236,32 @@ const initInteractiveCards = () => {
 
         card.addEventListener('mousemove', handleMove);
         card.addEventListener('mouseleave', reset);
+    });
+};
+
+// Ripple Effect for Submit Button
+const initRippleEffect = () => {
+    const submitBtn = document.querySelector('.btn-submit');
+    if (!submitBtn) return;
+
+    submitBtn.addEventListener('click', function(e) {
+        const ripple = document.createElement('div');
+        ripple.classList.add('btn-ripple');
+        
+        const rect = this.getBoundingClientRect();
+        const size = Math.max(rect.width, rect.height);
+        const x = e.clientX - rect.left - size / 2;
+        const y = e.clientY - rect.top - size / 2;
+        
+        ripple.style.width = ripple.style.height = size + 'px';
+        ripple.style.left = x + 'px';
+        ripple.style.top = y + 'px';
+        
+        this.appendChild(ripple);
+        
+        setTimeout(() => {
+            ripple.remove();
+        }, 600);
     });
 };
 
@@ -373,6 +399,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initInteractiveCards();
     initForm();
     initBackToTop();
+    initRippleEffect();
 });
 
 // Refresh ScrollTrigger on resize

@@ -154,15 +154,70 @@ const initScrollAnimations = () => {
         });
     });
 
-    // Contact Items
-    gsap.utils.toArray('.contact-item').forEach((item, index) => {
-        gsap.from(item, {
+    // Contact Info Section
+    gsap.from('.contact-info-title', {
+        scrollTrigger: {
+            trigger: '.contact-info',
+            start: 'top bottom-=100',
+            toggleActions: 'play none none reverse'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    });
+
+    gsap.from('.contact-info-description', {
+        scrollTrigger: {
+            trigger: '.contact-info',
+            start: 'top bottom-=100',
+            toggleActions: 'play none none reverse'
+        },
+        y: 20,
+        opacity: 0,
+        duration: 0.6,
+        delay: 0.2,
+        ease: 'power2.out'
+    });
+
+    // Contact Buttons
+    gsap.utils.toArray('.contact-btn').forEach((btn, index) => {
+        gsap.from(btn, {
             scrollTrigger: {
-                trigger: item,
+                trigger: btn,
                 start: 'top bottom-=50',
                 toggleActions: 'play none none reverse'
             },
-            x: -40,
+            x: -50,
+            opacity: 0,
+            duration: 0.7,
+            delay: index * 0.15,
+            ease: 'power3.out'
+        });
+    });
+
+    // Contact Form Header
+    gsap.from('.form-header', {
+        scrollTrigger: {
+            trigger: '.contact-form',
+            start: 'top bottom-=100',
+            toggleActions: 'play none none reverse'
+        },
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        ease: 'power3.out'
+    });
+
+    // Form Inputs
+    gsap.utils.toArray('.form-group').forEach((group, index) => {
+        gsap.from(group, {
+            scrollTrigger: {
+                trigger: group,
+                start: 'top bottom-=50',
+                toggleActions: 'play none none reverse'
+            },
+            y: 30,
             opacity: 0,
             duration: 0.6,
             delay: index * 0.1,
@@ -177,11 +232,30 @@ const initScrollAnimations = () => {
             start: 'top bottom-=100',
             toggleActions: 'play none none reverse'
         },
-        y: 50,
+        scale: 0.95,
         opacity: 0,
         duration: 0.8,
         ease: 'power3.out'
     });
+
+    // Contact Orbs Animation
+    const contactOrbs = document.querySelectorAll('.contact-orb');
+    if (contactOrbs.length && typeof gsap !== 'undefined') {
+        contactOrbs.forEach((orb, index) => {
+            gsap.from(orb, {
+                scrollTrigger: {
+                    trigger: '.contact',
+                    start: 'top bottom',
+                    toggleActions: 'play none none reverse'
+                },
+                scale: 0,
+                opacity: 0,
+                duration: 1.5,
+                delay: index * 0.3,
+                ease: 'power2.out'
+            });
+        });
+    }
 };
 
 // Parallax Effect for Hero Orbs
