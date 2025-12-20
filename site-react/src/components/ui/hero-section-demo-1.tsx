@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "motion/react";
+import Button from "@/components/ui/Button"; // Import your star button
 
 export default function Hero() {
   return (
@@ -58,6 +59,7 @@ export default function Hero() {
           transition={{ duration: 0.3, delay: 1.2 }}
           className="relative z-10 mt-8 flex flex-wrap items-center justify-center gap-6"
         >
+          {/* Download Resume */}
           <a
             href="assets/Resume 5⁄10⁄25.docx"
             download
@@ -65,30 +67,9 @@ export default function Hero() {
           >
             Download Résumé
           </a>
-          <a
-            href="#contact"
-            className="w-60 transform rounded-lg border border-gray-300 bg-white px-6 py-2 text-center font-medium text-black transition-all duration-300 hover:-translate-y-0.5 hover:bg-gray-100 dark:border-gray-700 dark:bg-black dark:text-white dark:hover:bg-gray-900"
-          >
-            Contact Me
-          </a>
-        </motion.div>
 
-        {/* Hero Preview Image */}
-        <motion.div
-          initial={{ opacity: 0, y: 10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.3, delay: 1.5 }}
-          className="relative z-10 mt-16 rounded-3xl border border-neutral-200 bg-neutral-100 p-4 shadow-md dark:border-neutral-800 dark:bg-neutral-900"
-        >
-          <div className="w-full overflow-hidden rounded-xl border border-gray-300 dark:border-gray-700">
-            <img
-              src="https://assets.aceternity.com/pro/aceternity-landing.webp"
-              alt="Landing page preview"
-              className="aspect-[16/9] h-auto w-full object-cover"
-              width={1000}
-              height={1000}
-            />
-          </div>
+          {/* Animated Star Button */}
+          <Button />
         </motion.div>
       </div>
     </section>

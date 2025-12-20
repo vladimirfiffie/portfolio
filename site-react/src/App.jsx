@@ -1,47 +1,47 @@
-import React from 'react'
-import { Button, IconButton } from 'aceternity-ui'
-import ContactForm from './components/ContactForm'
-import Nav from './components/Nav'
-import Hero from './components/Hero'
-import Projects from './components/Projects'
-import About from './components/About'
-import ContactInfo from './components/ContactInfo'
-import Footer from './components/Footer'
+"use client";
+
+import Nav from './components/Nav';
+import Hero from './components/Hero';
+import Projects from './components/Projects';
+import About from './components/About';
+import ContactInfo from './components/ContactInfo';
+import Footer from './components/Footer';
 
 export default function App() {
   return (
-    <div style={{fontFamily: 'Inter, system-ui, sans-serif'}}>
+    <div className="min-h-screen bg-white dark:bg-neutral-950 font-sans antialiased">
       <Nav />
+      
       <main>
+        {/* Main Sections */}
         <Hero />
         <Projects />
         <About />
 
-        <section style={{padding: '32px'}}>
-          <h2 style={{textAlign:'center',marginBottom:16}}>Get in touch</h2>
-          <div style={{maxWidth:900,margin:'0 auto',display:'grid',gridTemplateColumns:'1fr 1fr',gap:24}}>
-            <ContactInfo />
-            <ContactForm />
+        {/* Contact Section */}
+        <section id="contact" className="py-20 px-4 md:px-8">
+          <div className="max-w-7xl mx-auto">
+            <h2 className="text-3xl md:text-5xl font-bold text-center mb-12 dark:text-white">
+              Get in touch
+            </h2>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
+              {/* Left Side: Contact Info/Links */}
+              <ContactInfo />
+              
+              {/* Right Side: Placeholder for a Contact Form or Map */}
+              <div className="bg-neutral-100 dark:bg-neutral-900 rounded-3xl p-8 h-full min-h-[300px] flex items-center justify-center border border-neutral-200 dark:border-neutral-800">
+                <p className="text-neutral-500 dark:text-neutral-400 text-center">
+                  Have a project in mind? <br />
+                  <span className="font-semibold text-blue-500">Let&apos;s build something great together.</span>
+                </p>
+              </div>
+            </div>
           </div>
-        </section>
-
-        <Footer />
-
-        <section style={{padding: '32px'}}>
-          <h2>Buttons (Aceternity)</h2>
-          <div style={{display: 'flex', gap: 12, alignItems: 'center'}}>
-            <Button variant="primary">Primary</Button>
-            <Button variant="secondary">Secondary</Button>
-            <Button variant="outline">Outline</Button>
-            <IconButton icon="download" aria-label="download" />
-          </div>
-        </section>
-
-        <section style={{padding: '32px'}}>
-          <h2 id="contact">Contact Form</h2>
-          <ContactForm />
         </section>
       </main>
+
+      <Footer />
     </div>
-  )
+  );
 }

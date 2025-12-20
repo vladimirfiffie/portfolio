@@ -1,4 +1,4 @@
-:root{--bg:#fff;--text:#0a0a0a}
+:root{--bg:#000000;--text:#0a0a0a}
 body{margin:0;background:var(--bg);color:var(--text)}
 
 .contact-form{max-width:640px}

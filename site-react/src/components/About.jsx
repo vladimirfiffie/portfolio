@@ -1,25 +1,9 @@
-import React from 'react'
 import Skills from './Skills'
+
 import { HoverEffect as CardHoverEffect } from '@/components/ui/card-hover-effect'
 
 export default function About() {
-  const projectItems = [
-    {
-      title: 'Portfolio Website',
-      description: 'React + Tailwind + ShadCN components',
-      link: '#',
-    },
-    {
-      title: 'Task Manager App',
-      description: 'Full-stack project with Node.js & React',
-      link: '#',
-    },
-    {
-      title: 'E-commerce Demo',
-      description: 'React & Tailwind responsive layout',
-      link: '#',
-    },
-  ]
+
 
   return (
     <section id="about" className="py-12 px-4 md:px-8 bg-gray-50">
@@ -44,18 +28,7 @@ export default function About() {
           <Skills />
         </div>
 
-        {/* Visual card with projects / hover effect */}
-        <div>
-          <CardHoverEffect items={projectItems} className="p-4 rounded-xl shadow-md bg-white" />
-
-          <a
-            href="assets/Resume 5⁄10⁄25.docx"
-            download
-            className="mt-6 inline-block px-6 py-2 bg-gradient-to-r from-purple-600 to-blue-500 text-white font-bold rounded-md hover:rotate-3 transition-transform duration-300"
-          >
-            Download Résumé
-          </a>
-        </div>
+    
       </div>
     </section>
   )
