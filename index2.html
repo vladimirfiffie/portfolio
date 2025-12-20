@@ -33,9 +33,6 @@
         <link rel="stylesheet" href="style.css" />
     </head>
     <body>
-        <!-- Cursor Follower -->
-        <div class="cursor-follower"></div>
-
         <!-- Navigation -->
         <nav class="nav">
             <div class="nav-container">
@@ -106,13 +103,14 @@
                         <div class="stat-label">Ideas</div>
                     </div>
                 </div>
-            </div>
-            <div class="hero-badge">
-                <span class="badge-text">Available for work</span>
-                <div class="badge-stars" aria-hidden="true">
-                    <span class="star"></span>
-                    <span class="star"></span>
-                    <span class="star"></span>
+                <!-- move badge inside content for better layout -->
+                <div class="hero-badge">
+                    <span class="badge-text">Available for work</span>
+                    <div class="badge-stars" aria-hidden="true">
+                        <span class="star"></span>
+                        <span class="star"></span>
+                        <span class="star"></span>
+                    </div>
                 </div>
             </div>
         </section>
@@ -128,102 +126,87 @@
                         development and design
                     </p>
                 </div>
-                <div class="projects-swiper swiper">
-                    <div class="swiper-wrapper">
-                        <div class="swiper-slide">
-                            <article class="project-card">
-                                <div class="project-image">
-                                    <img
-                                        src="images/paoer-ship.jpg"
-                                        alt="Pao'er Ship"
-                                        loading="lazy"
-                                    />
-                                    <div class="project-overlay">
-                                        <a
-                                            href="https://github.com/ponderrr/paoer_ship"
-                                            target="_blank"
-                                            rel="noopener noreferrer"
-                                            class="project-link"
-                                        >
-                                            <span
-                                                class="iconify"
-                                                data-icon="mdi:github"
-                                            ></span>
-                                            View on GitHub
-                                        </a>
-                                    </div>
+                <div class="projects-scroll" aria-label="Featured projects">
+                    <div class="projects-track">
+                        <article class="project-card">
+                            <div class="project-image">
+                                <img
+                                    src="images/paoer-ship.jpg"
+                                    alt="Pao'er Ship"
+                                    loading="lazy"
+                                />
+                                <div class="project-overlay">
+                                    <a
+                                        href="https://github.com/ponderrr/paoer_ship"
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        class="project-link"
+                                    >
+                                        <span
+                                            class="iconify"
+                                            data-icon="mdi:github"
+                                        ></span>
+                                        View on GitHub
+                                    </a>
                                 </div>
-                                <div class="project-content">
-                                    <div class="project-meta">
-                                        <span class="project-year">2024</span>
-                                        <span class="project-type"
-                                            >Game Development</span
-                                        >
-                                    </div>
-                                    <h3 class="project-title">Pao'er Ship</h3>
-                                    <p class="project-description">
-                                        A Raspberry Pi-based Battleship game
-                                        featuring custom animations and
-                                        interactive gameplay. Built with Pygame
-                                        for smooth performance on embedded
-                                        systems.
-                                    </p>
-                                    <div class="project-tags">
-                                        <span class="tag">Pygame</span>
-                                        <span class="tag">Python</span>
-                                        <span class="tag">Raspberry Pi</span>
-                                    </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-meta">
+                                    <span class="project-year">2024</span>
+                                    <span class="project-type">Game Development</span>
                                 </div>
-                            </article>
-                        </div>
+                                <h3 class="project-title">Pao'er Ship</h3>
+                                <p class="project-description">
+                                    A Raspberry Pi-based Battleship game
+                                    featuring custom animations and
+                                    interactive gameplay. Built with Pygame
+                                    for smooth performance on embedded
+                                    systems.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">Pygame</span>
+                                    <span class="tag">Python</span>
+                                    <span class="tag">Raspberry Pi</span>
+                                </div>
+                            </div>
+                        </article>
 
-                        <div class="swiper-slide">
-                            <article class="project-card">
-                                <div class="project-image">
-                                    <img
-                                        src="images/lion-den-cinema.png"
-                                        alt="Lion's Den Cinema"
-                                        loading="lazy"
-                                    />
-                                    <div class="project-overlay">
-                                        <a href="#" class="project-link">
-                                            <span
-                                                class="iconify"
-                                                data-icon="mdi:github"
-                                            ></span>
-                                            View Project
-                                        </a>
-                                    </div>
+                        <article class="project-card">
+                            <div class="project-image">
+                                <img
+                                    src="images/lion-den-cinema.png"
+                                    alt="Lion's Den Cinema"
+                                    loading="lazy"
+                                />
+                                <div class="project-overlay">
+                                    <a href="#" class="project-link">
+                                        <span
+                                            class="iconify"
+                                            data-icon="mdi:github"
+                                        ></span>
+                                        View Project
+                                    </a>
                                 </div>
-                                <div class="project-content">
-                                    <div class="project-meta">
-                                        <span class="project-year">2024</span>
-                                        <span class="project-type"
-                                            >Web Application</span
-                                        >
-                                    </div>
-                                    <h3 class="project-title">
-                                        Lion's Den Cinema
-                                    </h3>
-                                    <p class="project-description">
-                                        A comprehensive cinema booking platform
-                                        with dynamic UI and seamless animations.
-                                        Built with React and TypeScript for
-                                        type-safe, scalable development.
-                                    </p>
-                                    <div class="project-tags">
-                                        <span class="tag">React</span>
-                                        <span class="tag">TypeScript</span>
-                                        <span class="tag">Figma</span>
-                                    </div>
+                            </div>
+                            <div class="project-content">
+                                <div class="project-meta">
+                                    <span class="project-year">2024</span>
+                                    <span class="project-type">Web Application</span>
                                 </div>
-                            </article>
-                        </div>
-                    </div>
-                    <div class="swiper-pagination"></div>
-                    <div class="swiper-navigation">
-                        <button class="swiper-button-prev" aria-label="Previous project"></button>
-                        <button class="swiper-button-next" aria-label="Next project"></button>
+                                <h3 class="project-title">Lion's Den Cinema</h3>
+                                <p class="project-description">
+                                    A comprehensive cinema booking platform
+                                    with dynamic UI and seamless animations.
+                                    Built with React and TypeScript for
+                                    type-safe, scalable development.
+                                </p>
+                                <div class="project-tags">
+                                    <span class="tag">React</span>
+                                    <span class="tag">TypeScript</span>
+                                    <span class="tag">Figma</span>
+                                </div>
+                            </div>
+                        </article>
                     </div>
                 </div>
             </div>
@@ -238,7 +221,7 @@
                         <h2 class="section-title">A Bit About Me</h2>
                         <div class="about-text">
                             <p>
-                                I'm an Information Technology student with a
+                                I'm an Information Technology graduate with a
                                 passion for creating engaging digital
                                 experiences. I specialize in combining creative
                                 coding with thoughtful design to build
@@ -450,7 +433,6 @@
                                         autocomplete="name"
                                     />
                                     <label for="name">
-                                        <span class="iconify" data-icon="mdi:account-outline"></span>
                                         Your Name
                                     </label>
                                     <div class="input-underline"></div>
@@ -468,7 +450,6 @@
                                         autocomplete="email"
                                     />
                                     <label for="email">
-                                        <span class="iconify" data-icon="mdi:email-outline"></span>
                                         Your Email
                                     </label>
                                     <div class="input-underline"></div>
@@ -485,20 +466,18 @@
                                         placeholder=" "
                                     ></textarea>
                                     <label for="message">
-                                        <span class="iconify" data-icon="mdi:message-outline"></span>
                                         Your Message
                                     </label>
                                     <div class="input-underline"></div>
                                     <div class="input-focus-line"></div>
                                 </div>
                             </div>
-                            <button type="submit" class="btn btn-primary btn-submit">
-                                <span class="btn-text">Send Message</span>
-                                <span class="btn-icon">
-                                    <span class="iconify" data-icon="mdi:send"></span>
-                                </span>
-                                <div class="btn-ripple"></div>
-                            </button>
+                            <div style="display: flex; justify-content: center;">
+                                <button type="submit" class="btn btn-primary btn-submit">
+                                    <span class="btn-text">Send Message</span>
+                                    <div class="btn-ripple"></div>
+                                </button>
+                            </div>
                         </div>
                     </form>
                 </div>

@@ -33,55 +33,6 @@ const initThemeToggle = () => {
     });
 };
 
-// Cursor Follower
-const initCursorFollower = () => {
-    const cursor = document.querySelector('.cursor-follower');
-    if (!cursor) return;
-
-    let mouseX = 0;
-    let mouseY = 0;
-    let cursorX = 0;
-    let cursorY = 0;
-
-    document.addEventListener('mousemove', (e) => {
-        mouseX = e.clientX;
-        mouseY = e.clientY;
-    });
-
-    const animateCursor = () => {
-        cursorX += (mouseX - cursorX) * 0.1;
-        cursorY += (mouseY - cursorY) * 0.1;
-        cursor.style.left = cursorX + 'px';
-        cursor.style.top = cursorY + 'px';
-        requestAnimationFrame(animateCursor);
-    };
-    animateCursor();
-
-    // Enhanced hover effect for clickable elements
-    const hoverElements = document.querySelectorAll('a, button, .project-card, .skill-item, .contact-btn, .resume-download-wrapper .btn, input, textarea, .nav-link');
-    hoverElements.forEach(el => {
-        el.addEventListener('mouseenter', () => {
-            cursor.classList.add('hover');
-            if (typeof gsap !== 'undefined') {
-                gsap.to(cursor, { 
-                    scale: 1.2, 
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
-            }
-        });
-        el.addEventListener('mouseleave', () => {
-            cursor.classList.remove('hover');
-            if (typeof gsap !== 'undefined') {
-                gsap.to(cursor, { 
-                    scale: 1, 
-                    duration: 0.3,
-                    ease: 'power2.out'
-                });
-            }
-        });
-    });
-};
 
 // Mobile Navigation
 const initMobileNav = () => {
@@ -202,40 +153,6 @@ const initProjectSlider = () => {
                 }
             }
         }
-    });
-};
-
-// Interactive Project Cards (3D tilt + light)
-const initInteractiveCards = () => {
-    const cards = document.querySelectorAll('.project-card, .skill-item, .contact-form, .resume-download-wrapper .btn');
-    if (!cards.length) return;
-
-    cards.forEach(card => {
-        const handleMove = (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const px = (x / rect.width) - 0.5;
-            const py = (y / rect.height) - 0.5;
-
-            const tiltX = (-py * 10).toFixed(2);
-            const tiltY = (px * 10).toFixed(2);
-
-            card.style.setProperty('--mouse-x', `${(x / rect.width) * 100}%`);
-            card.style.setProperty('--mouse-y', `${(y / rect.height) * 100}%`);
-            card.style.setProperty('--tilt-x', `${tiltX}deg`);
-            card.style.setProperty('--tilt-y', `${tiltY}deg`);
-        };
-
-        const reset = () => {
-            card.style.setProperty('--mouse-x', '50%');
-            card.style.setProperty('--mouse-y', '50%');
-            card.style.setProperty('--tilt-x', '0deg');
-            card.style.setProperty('--tilt-y', '0deg');
-        };
-
-        card.addEventListener('mousemove', handleMove);
-        card.addEventListener('mouseleave', reset);
     });
 };
 
@@ -391,12 +308,11 @@ const initBackToTop = () => {
 // Initialize everything
 document.addEventListener('DOMContentLoaded', () => {
     initThemeToggle();
-    initCursorFollower();
+    // initCursorFollower(); - Disabled
     initMobileNav();
     initActiveNav();
     initSmoothScroll();
-    initProjectSlider();
-    initInteractiveCards();
+    // initProjectSlider(); - replaced with CSS scroll-snap layout
     initForm();
     initBackToTop();
     initRippleEffect();

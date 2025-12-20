@@ -99,7 +99,7 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     transition: background-color var(--transition-base), color var(--transition-base);
-    cursor: none;
+    cursor: auto;
 }
 
 /* Text Selection - Using solid color since gradients don't work in ::selection */
@@ -136,30 +136,6 @@ body {
 * {
     scrollbar-width: thin;
     scrollbar-color: var(--accent) var(--surface);
-}
-
-/* Cursor Follower */
-.cursor-follower {
-    position: fixed;
-    width: 20px;
-    height: 20px;
-    border: 2px solid var(--accent);
-    border-radius: 50%;
-    pointer-events: none;
-    z-index: 9999;
-    transform: translate(-50%, -50%);
-    opacity: 0.6;
-    transition: opacity 0.3s, transform 0.3s, width 0.3s, height 0.3s, border-color 0.3s;
-    mix-blend-mode: normal;
-}
-
-.cursor-follower.hover {
-    width: 40px;
-    height: 40px;
-    border-width: 2px;
-    border-color: var(--accent-tertiary);
-    opacity: 0.8;
-    background: rgba(16, 185, 129, 0.1);
 }
 
 /* Navigation */
@@ -447,18 +423,15 @@ body {
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
-    padding-top: 100px;
-    padding-bottom: 60px;
+    padding: var(--space-xl) 0;
     gap: var(--space-md);
 }
 
 .hero-badge {
-    position: absolute;
-    top: 120px;
-    right: var(--space-xl);
+    position: relative;
     display: inline-flex;
     align-items: center;
+    gap: var(--space-xs);
     padding: var(--space-xs) var(--space-md);
     background: var(--surface);
     border: 1px solid var(--border);
@@ -469,6 +442,7 @@ body {
     z-index: 10;
     box-shadow: var(--shadow-sm);
     transition: all var(--transition-base);
+    margin-top: var(--space-lg);
 }
 
 .badge-stars {
@@ -576,6 +550,14 @@ body {
     display: inline-block;
     min-width: 1px;
     min-height: 1em;
+}
+
+/* Prevent typewriter text from wrapping to the next line */
+.text-interchange,
+.typewriter-text {
+    white-space: nowrap;
+    overflow: hidden;
+    display: inline-block;
 }
 
 .typewriter-cursor {
@@ -845,6 +827,51 @@ section {
     margin: 0 auto;
 }
 
+/* Swiper fanned/coverflow tweaks for a card-like fan layout */
+.projects-swiper .swiper-slide {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    will-change: transform, opacity;
+}
+
+.projects-swiper .swiper-slide .project-card {
+    width: 100%;
+    max-width: 380px;
+    transition: transform 300ms var(--transition-base), box-shadow 300ms var(--transition-base);
+}
+
+.projects-swiper .swiper-slide-active .project-card {
+    transform: scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
+/* Horizontal scroll-snap layout for featured projects (simple, extendable) */
+.projects-scroll {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    scroll-snap-type: x mandatory;
+    padding-bottom: var(--space-md);
+}
+
+.projects-track {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: stretch;
+    padding: var(--space-md) var(--space-md);
+}
+
+.projects-track .project-card {
+    flex: 0 0 320px;
+    scroll-snap-align: center;
+    border-radius: var(--radius-xl);
+}
+
+.projects-track .project-card:hover {
+    transform: translateY(-6px) scale(1.02);
+    box-shadow: var(--shadow-xl);
+}
+
 .swiper-wrapper {
     align-items: stretch;
 }
@@ -874,34 +901,52 @@ section {
     border-radius: var(--radius-xl);
     overflow: hidden;
     box-shadow: var(--shadow-sm);
+    position: relative;
+    transition: all var(--transition-base);
+    cursor: pointer;
 }
 
-.project-card,
+.project-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: var(--gradient-primary);
+    opacity: 0;
+    transition: opacity var(--transition-base);
+    z-index: 0;
+    border-radius: inherit;
+}
+
+.project-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: var(--shadow-lg), 0 0 30px rgba(16, 185, 129, 0.2);
+}
+
+.project-card:hover::before {
+    opacity: 0.05;
+}
+
+.project-image,
+.project-content {
+    position: relative;
+    z-index: 1;
+}
+
 .skill-item,
 .contact-item,
 .resume-download-wrapper .btn {
     position: relative;
-    --mouse-x: 50%;
-    --mouse-y: 50%;
-    --tilt-x: 0deg;
-    --tilt-y: 0deg;
-    transform: perspective(900px) rotateX(var(--tilt-x)) rotateY(var(--tilt-y));
-    transition: transform var(--transition-fast), box-shadow var(--transition-base), border-color var(--transition-base), background var(--transition-base);
+    transition: all var(--transition-base);
 }
 
-.project-card::before,
 .skill-item::before,
 .contact-item::before,
 .resume-download-wrapper .btn::before {
     content: '';
     position: absolute;
     inset: -1px;
-    background: radial-gradient(
-        circle at var(--mouse-x) var(--mouse-y),
-        rgba(34, 211, 238, 0.35),
-        rgba(106, 90, 205, 0.25),
-        transparent 60%
-    );
+    background: transparent;
     mix-blend-mode: screen;
     opacity: 0;
     transition: opacity var(--transition-base);
@@ -909,20 +954,6 @@ section {
     border-radius: inherit;
 }
 
-[data-theme="light"] .project-card::before,
-[data-theme="light"] .skill-item::before,
-[data-theme="light"] .contact-item::before,
-[data-theme="light"] .resume-download-wrapper .btn::before {
-    background: radial-gradient(
-        circle at var(--mouse-x) var(--mouse-y),
-        rgba(34, 211, 238, 0.5),
-        rgba(106, 90, 205, 0.35),
-        transparent 60%
-    );
-    mix-blend-mode: normal;
-}
-
-.project-card:hover,
 .skill-item:hover,
 .contact-item:hover,
 .resume-download-wrapper .btn:hover {
@@ -930,7 +961,6 @@ section {
     border-color: var(--accent);
 }
 
-.project-card:hover::before,
 .skill-item:hover::before,
 .contact-item:hover::before,
 .resume-download-wrapper .btn:hover::before {
@@ -1651,7 +1681,7 @@ section {
 .form-group input,
 .form-group textarea {
     width: 100%;
-    padding: var(--space-lg) var(--space-md) var(--space-md) 3rem;
+    padding: var(--space-lg) var(--space-md) var(--space-md) var(--space-md);
     background: var(--surface);
     border: 2px solid var(--border);
     border-radius: var(--radius-md);
@@ -1661,7 +1691,7 @@ section {
     transition: all var(--transition-base);
     outline: none;
     position: relative;
-}
+}}
 
 .form-group textarea {
     padding-top: var(--space-xl);
@@ -1672,24 +1702,20 @@ section {
 
 .form-group label {
     position: absolute;
-    left: 3rem;
-    top: 50%;
-    transform: translateY(-50%);
+    left: var(--space-md);
+    top: var(--space-lg);
+    transform: none;
     font-size: var(--font-size-base);
     color: var(--text-secondary);
     pointer-events: none;
     transition: all var(--transition-base);
-    background: linear-gradient(to bottom, var(--background) 0%, var(--background) 50%, var(--surface) 50%, var(--surface) 100%);
+    /* make label background match textarea so labels float cleanly */
+    background: linear-gradient(to bottom, var(--background) 0%, var(--background) 30%, var(--surface) 30%, var(--surface) 100%);
     padding: 0 var(--space-xs);
     z-index: 2;
     display: flex;
     align-items: center;
     gap: var(--space-xs);
-}
-
-.form-group label .iconify {
-    font-size: 1.25rem;
-    transition: all var(--transition-base);
 }
 
 .textarea-wrapper label {
@@ -1746,13 +1772,7 @@ section {
     font-weight: 600;
 }
 
-.form-group input:focus ~ label .iconify,
-.form-group input:not(:placeholder-shown) ~ label .iconify,
-.form-group textarea:focus ~ label .iconify,
-.form-group textarea:not(:placeholder-shown) ~ label .iconify {
-    color: var(--accent);
-    transform: scale(1.1);
-}
+/* icons removed from labels; no icon styles needed */
 
 .textarea-wrapper input:focus ~ label,
 .textarea-wrapper input:not(:placeholder-shown) ~ label,

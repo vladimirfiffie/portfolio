@@ -370,7 +370,7 @@ const initTextInterchange = () => {
     const typewriterText = document.querySelector('.typewriter-text');
     if (!typewriterText) return;
 
-    const words = ['playful interfaces', 'cinematic web experiences', 'pixel-perfect UIs', 'thoughtful animations'];
+    const words = ['playful interfaces', 'web experiences', 'thoughtful animations'];
     let wordIndex = 0;
     let charIndex = 0;
     let isDeleting = false;
