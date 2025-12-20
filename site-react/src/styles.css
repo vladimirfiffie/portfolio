@@ -1,0 +1,43 @@
+:root{--bg:#fff;--text:#0a0a0a}
+body{margin:0;background:var(--bg);color:var(--text)}
+
+.contact-form{max-width:640px}
+.contact-form .form-row{display:flex;flex-direction:column;margin-bottom:12px}
+.contact-form label{font-weight:600;margin-bottom:6px}
+.contact-form input,.contact-form textarea{padding:10px;border:1px solid #ddd;border-radius:8px;font-size:14px}
+.submit-row{display:flex;justify-content:center;margin-top:8px}
+
+.rotating-border{position:relative}
+.rotating-border::before{content:'';position:absolute;inset:-3px;background:linear-gradient(90deg,#00e676,#00b0ff,#7c4dff);z-index:-1;border-radius:10px;filter:blur(8px);opacity:0.9;animation:rotate 3s linear infinite}
+@keyframes rotate{from{transform:rotate(0)}to{transform:rotate(360deg)}}
+
+/* Nav */
+.site-nav{background:transparent;padding:18px 24px}
+.nav-inner{display:flex;align-items:center;justify-content:space-between;max-width:1100px;margin:0 auto}
+.brand{font-weight:700}
+.nav-links a{margin:0 10px;color:inherit;text-decoration:none}
+
+/* Hero */
+.hero{padding:48px 24px}
+.hero-inner{max-width:1100px;margin:0 auto;display:flex;gap:24px;align-items:center}
+.hero-content{flex:1}
+.hero-media{width:320px}
+.hero-card{background:linear-gradient(180deg,#fafafa,#f0f0f3);height:220px;border-radius:12px}
+.lead{color:#555}
+.hero-cta{display:flex;align-items:center;gap:12px;margin-top:16px}
+.badge{display:inline-flex;align-items:center;padding:6px 10px;border-radius:999px;background:#111;color:#fff;font-weight:600}
+.badge.available{background:#00c853;position:relative}
+.badge .stars{width:40px;height:10px;margin-left:8px}
+.stars::before,.stars::after{content:'';position:absolute;width:6px;height:6px;background:rgba(255,255,255,0.9);border-radius:50%;top:-2px;left:50%}
+.typewriter{white-space:nowrap;margin-left:8px}
+
+/* Projects */
+.projects-section{padding:32px 24px}
+.projects-carousel{max-width:1100px;margin:0 auto}
+.project-card{position:relative;border-radius:12px;overflow:hidden;height:220px;background:linear-gradient(180deg,#fff,#f7f7fb);display:flex;align-items:flex-end;padding:16px;box-shadow:0 6px 20px rgba(10,10,20,0.06)}
+.project-overlay{position:absolute;inset:0;pointer-events:none;background:radial-gradient(circle at 20% 20%, rgba(0,200,83,0.12), transparent 20%), radial-gradient(circle at 80% 80%, rgba(124,77,255,0.08), transparent 20%)}
+.project-body{position:relative;z-index:2}
+.project-card h3{margin:0 0 6px}
+
+
+
