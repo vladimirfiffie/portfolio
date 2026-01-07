@@ -1,70 +1,39 @@
-import { useState } from 'react';
-import {
-  Navbar,
-  NavBody,
-  NavItems,
-  NavbarLogo,
-  NavbarButton,
-  MobileNav,
-  MobileNavHeader,
-  MobileNavMenu,
-  MobileNavToggle,
-} from '@/components/ui/resizable-navbar';
-
-interface NavLink {
-  name: string;
-  link: string;
-}
-
-const LINKS: NavLink[] = [
-  { name: 'Home', link: '#home' },
-  { name: 'Projects', link: '#projects' },
-  { name: 'About', link: '#about' },
-  { name: 'Contact', link: '#contact' },
-];
+"use client";
+import { JSX, useState } from 'react';
+import { Menu, MenuItem, HoveredLink } from './ui/navbar-menu';
 
 export default function Nav(): JSX.Element {
-  const [open, setOpen] = useState<boolean>(false);
+  const [active, setActive] = useState<string | null>(null);
 
   return (
-    <Navbar>
-      <NavBody>
-        <NavbarLogo />
-
-        <NavItems items={LINKS} onItemClick={() => setOpen(false)} />
-
-        <div className="ml-auto">
-          <NavbarButton 
-            href="assets/Resume_Vladimir.pdf" 
-            className="rotating-border" 
-            variant="primary"
-          >
-            Resume
-          </NavbarButton>
-        </div>
-      </NavBody>
-
-      <MobileNav>
-        <MobileNavHeader>
-          <NavbarLogo />
-          <MobileNavToggle isOpen={open} onClick={() => setOpen((v) => !v)} />
-        </MobileNavHeader>
-
-        <MobileNavMenu isOpen={open} onClose={() => setOpen(false)}>
-          <div className="flex flex-col gap-2 p-4">
-            {LINKS.map((l: NavLink) => (
-              <a 
-                key={l.link} 
-                href={l.link} 
-                onClick={() => setOpen(false)} 
-                className="px-2 py-2 rounded hover:bg-neutral-100 dark:hover:bg-neutral-800 transition-colors"
-              >
-                {l.name}
-              </a>
-            ))}
+    <div className="fixed top-4 w-full flex justify-center z-50">
+      <Menu setActive={setActive}>
+        <MenuItem setActive={setActive} active={active} item="Home">
+          <div className="flex flex-col space-y-4">
+            <HoveredLink href="#home">Home</HoveredLink>
           </div>
-        </MobileNavMenu>
-      </MobileNav>
-    </Navbar>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Projects">
+          <div className="flex flex-col space-y-4">
+            <HoveredLink href="#projects">View Projects</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="About">
+          <div className="flex flex-col space-y-4">
+            <HoveredLink href="#about">About Me</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Contact">
+          <div className="flex flex-col space-y-4">
+            <HoveredLink href="#contact">Get in Touch</HoveredLink>
+          </div>
+        </MenuItem>
+        <MenuItem setActive={setActive} active={active} item="Resume">
+          <div className="flex flex-col space-y-4">
+            <HoveredLink href="assets/Resume_Vladimir.pdf">Download Resume</HoveredLink>
+          </div>
+        </MenuItem>
+      </Menu>
+    </div>
   );
 }

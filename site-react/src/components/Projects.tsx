@@ -20,7 +20,7 @@ const PROJECTS = [
       "A comprehensive cinema booking platform with a dynamic UI and seamless animations. Built with React and TypeScript for type-safe, scalable development.",
     tags: ["React", "TypeScript", "Figma"],
     src: "/images/lion-den-cinema.png",
-    github: null, // add link later if needed
+    github: null, 
     button: "View Project",
   },
 ]
