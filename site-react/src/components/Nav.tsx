@@ -1,13 +1,15 @@
 "use client";
 import { JSX, useState } from 'react';
 import { Menu, MenuItem, HoveredLink } from './ui/navbar-menu';
+import ThemeSwitcher from './ui/ThemeSwitcher';
 
 export default function Nav(): JSX.Element {
   const [active, setActive] = useState<string | null>(null);
 
   return (
     <div className="fixed top-4 w-full flex justify-center z-50">
-      <Menu setActive={setActive}>
+      <div className="w-full max-w-5xl px-4 relative flex items-center justify-center">
+        <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="Home">
           <div className="flex flex-col space-y-4">
             <HoveredLink href="#home">Home</HoveredLink>
@@ -33,7 +35,11 @@ export default function Nav(): JSX.Element {
             <HoveredLink href="assets/Resume_Vladimir.pdf">Download Resume</HoveredLink>
           </div>
         </MenuItem>
-      </Menu>
+        </Menu>
+        <div className="absolute right-4 top-1/2 -translate-y-1/2">
+          <ThemeSwitcher />
+        </div>
+      </div>
     </div>
   );
 }

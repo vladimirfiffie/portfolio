@@ -10,6 +10,14 @@ body {
   color: #0f172a;
 }
 
+html, body, #root {
+  overflow-x: hidden;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 /* Light theme */
 :root {
   --radius-sm: calc(var(--radius) - 4px);
